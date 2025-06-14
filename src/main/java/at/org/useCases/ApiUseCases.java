@@ -6,11 +6,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/*
+ *  CLASSE ONDE REALIZA CHAMADAS HTTP PARA A API
+ */
+
 public class ApiUseCases {
 
   private static final String BASE_URL = "http://localhost:7000";
 
-
+  /*
+   * MÉTODOS
+   */
   public static String checkStatus() {
     try {
       return sendGetRequest("/status");
@@ -18,7 +24,6 @@ public class ApiUseCases {
       return "Erro ao verificar status: " + e.getMessage();
     }
   }
-
 
   public static String createUser(String name, String email, int age) {
     try {
@@ -31,7 +36,6 @@ public class ApiUseCases {
     }
   }
 
-
   public static String listUsers() {
     try {
       return sendGetRequest("/usuarios");
@@ -40,7 +44,6 @@ public class ApiUseCases {
     }
   }
 
- 
   public static String getUserByEmail(String email) {
     try {
       return sendGetRequest("/usuarios/" + email);
@@ -49,6 +52,9 @@ public class ApiUseCases {
     }
   }
 
+  /*
+   * MÉTODOS RESPONSAVEIS POR ENVIAR AS REQUISIÇÕES GET E POST
+   */
 
   private static String sendGetRequest(String endpoint) throws Exception {
     URL url = new URL(BASE_URL + endpoint);
@@ -75,7 +81,7 @@ public class ApiUseCases {
     con.setRequestMethod("POST");
 
     con.setRequestProperty("Content-Type", "application/json");
-    
+
     con.setDoOutput(true);
 
     try (OutputStream os = con.getOutputStream()) {

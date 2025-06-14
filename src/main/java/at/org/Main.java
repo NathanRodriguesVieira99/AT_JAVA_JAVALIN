@@ -15,6 +15,10 @@ public class Main {
     public static Javalin createApp() {
         Javalin app = Javalin.create();
 
+        /*
+         * ENDPOITS DA API
+         */
+
         app.get("/hello", ctx -> ctx.result("Hello, Javalin!"));
 
         app.get("/status", ctx -> ctx.json(new Status("ok", Instant.now().toString())));
@@ -55,13 +59,10 @@ public class Main {
         return app;
     };
 
-    public static void main(String[] args) {
-        createApp().start(7000);
-
-        UseCases();
-    }
-
     private static void UseCases() {
+        /*
+         * Instancio os métodos HTTP de consumo da API
+         */
 
         System.out.println("\n[GET /status]");
         System.out.println(ApiUseCases.checkStatus());
@@ -77,4 +78,12 @@ public class Main {
         System.out.println("\nGET /usuarios/java_da_silva@test.com");
         System.out.println(ApiUseCases.getUserByEmail("java_da_silva@test.com"));
     }
+
+    public static void main(String[] args) {
+        // inicia o servidor
+        createApp().start(7000);
+        // chamo os métodos HTTP de consumo da API
+        UseCases();
+    }
+
 }

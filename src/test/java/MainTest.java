@@ -10,6 +10,10 @@ import at.org.entities.User;
 import io.javalin.Javalin;
 import io.javalin.testtools.JavalinTest;
 
+/*
+ *  TESTES DOS ENDPOITS DA API
+ */
+
 public class MainTest {
 
   private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -37,7 +41,7 @@ public class MainTest {
 
     JavalinTest.test(app, (server, client) -> {
       User newUser = new User(30, "test@example.com", "Test User");
-      
+
       String jsonBody = objectMapper.writeValueAsString(newUser);
 
       var response = client.post("/usuarios", jsonBody);

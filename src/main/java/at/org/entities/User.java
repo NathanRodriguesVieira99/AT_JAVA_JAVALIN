@@ -1,6 +1,10 @@
 
 package at.org.entities;
 
+/*
+ *  ENTIDADE USER
+ */
+
 public class User {
   private int age;
   private String email;

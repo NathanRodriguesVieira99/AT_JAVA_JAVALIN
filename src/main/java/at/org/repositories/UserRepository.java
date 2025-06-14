@@ -6,6 +6,10 @@ import java.util.List;
 
 import at.org.entities.User;
 
+/*
+ *  REPOSITORY COM GERENCIAMENTO DOS USERS EM MEMÓRIA
+ */
+
 public class UserRepository {
   private final List<User> users = new ArrayList<>();
 
